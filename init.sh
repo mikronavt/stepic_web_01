@@ -8,9 +8,8 @@ cd public
 mkdir css
 mkdir img
 mkdir js
-cd ..
-cd ..
-#sudo ln -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
-#sudo /etc/init.d/nginx restart
+cd /
+sudo ln -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
+sudo /etc/init.d/nginx restart
 #sudo ln -s /home/box/web/etc/gunicorn.conf   /etc/gunicorn.d/test
 #sudo /etc/init.d/gunicorn restart
