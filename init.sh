@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #sudo apt-get update
 #sudo apt-get install nginx
+sudo /etc/init.d/nginx start
+ps -o pid,euser,egroup,comm,args -C nginx
 cd /home/box/web
 mkdir public
 mkdir uploads
