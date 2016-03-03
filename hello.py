@@ -15,6 +15,6 @@ def app(environ, start_response):
         for param in query:
             body += param + '\n'
 
-    
+
     start_response(status, headers)
     return [ body ]
