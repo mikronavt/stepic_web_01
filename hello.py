@@ -12,11 +12,11 @@ def app(environ, start_response):
     ('Content-Type', 'text/plain')
     ]
 
-    body = ''
-    if environ['REQUEST_METHOD'] == 'GET' and environ['QUERY_STRING']:
-        query = environ['QUERY_STRING'].split('&');
-        for param in query:
-            body += param + '\n'
+    body = 'HYLOOOOOOEEEEEE'
+    #if environ['REQUEST_METHOD'] == 'GET' and environ['QUERY_STRING']:
+    #    query = environ['QUERY_STRING'].split('&');
+    #    for param in query:
+    #        body += param + '\n'
 
 
     start_response(status, headers)
