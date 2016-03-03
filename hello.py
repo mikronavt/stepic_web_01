@@ -3,7 +3,6 @@ import wsgiref.handlers
 
 
 def app(environ, start_response):
-# бизнес-логика
     status = '200 OK'
     headers = [
     ('Content-Type', 'text/plain')
