@@ -14,8 +14,8 @@ curl -vv http://0.0.0.0:8000/login/
 echo "question"
 curl -vv http://0.0.0.0:8000/question/199/
 echo "ask/popular"
-curl -vv http://10.42.147.197:8000/ask//popular/
+curl -vv http://0.0.0.0:8000/ask//popular/
 echo "blabla"
-curl -vv http://10.42.147.197:8000/blablabla/
+curl -vv http://0.0.0.0:8000/blablabla/
 echo "/"
-curl -vv http://10.42.147.197:8000/
+curl -vv http://0.0.0.0:8000/
