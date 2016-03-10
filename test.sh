@@ -11,3 +11,4 @@
 #curl "http://0.0.0.0:8080/?a=1&a=2&b=3"
 curl -vv http://0.0.0.0:8000/login/
 curl -vv http://0.0.0.0:8000/question/199/
+curl -vv http://10.42.147.197:8000/ask//popular/
