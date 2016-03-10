@@ -12,4 +12,4 @@
 curl -vv http://0.0.0.0:8000/login/
 curl -vv http://0.0.0.0:8000/question/199/
 curl -vv http://10.42.147.197:8000/ask//popular/
-curl -vv http://10.42.147.197:8000/blablabla/
+curl -vv http://localhost/blablabla/
