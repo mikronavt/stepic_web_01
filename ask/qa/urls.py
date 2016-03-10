@@ -4,16 +4,16 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('views',
+urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'ask.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^', 'test'),
-    url(r'^login/', 'test'),
-    url(r'^signup/', 'test'),
-    url(r'^question/(\d+)/', 'test'),
-    url(r'^ask/', 'test'),
-    url(r'^popular/', 'test'),
-    url(r'^new/', 'test'),
+    url(r'^', 'views.test'),
+    url(r'^login/', 'views.test'),
+    url(r'^signup/', 'views.test'),
+    url(r'^question/(\d+)/', 'views.test'),
+    url(r'^ask/', 'views.test'),
+    url(r'^popular/', 'views.test'),
+    url(r'^new/', 'views.test'),
 )
