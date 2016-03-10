@@ -17,3 +17,4 @@ sudo /etc/init.d/nginx restart
 sudo ln -s /home/box/web/hello.py   /etc/gunicorn.d/test
 sudo /etc/init.d/gunicorn restart
 gunicorn -D -c /home/box/web/hello.py hello:app
+gunicorn ask.wsgi:application --bind 0.0.0.0:8000
