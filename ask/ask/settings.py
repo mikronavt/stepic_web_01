@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.path.join(BASE_DIR, 'my_py_db'),
+        'NAME': 'my_py_db',
         'USER': 'web_py',
         'PASSWORD': 'test123',
     }
