@@ -21,5 +21,5 @@ cd /home/box/web/ask
 gunicorn -D ask.wsgi:application --bind 0.0.0.0:8000
 initdb.sh
 cd ask
-python manage.py validate
 python manage.py syncdb
+cd ..
