@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'ask.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'(^$)', 'qa.views.questions_lists_all'),
+    url(r'(^$)', 'qa.views.questions_all'),
     url(r'^login/.*$', 'qa.views.test'),
     url(r'^signup/.*$', 'qa.views.test'),
     url(r'^question/?P<slug>\w+/$', 'qa.views.question_details'),
