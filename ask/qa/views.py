@@ -10,7 +10,7 @@ from models import Question, Answer
 def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
-def questions_all(request):
+def questions_all(request, *args, **kwargs):
     questions = Question.objects.filter()
     questions = questions.order_by('-id')
     limit = request.GET.get('limit', 10)
