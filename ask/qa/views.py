@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.http import HttpResponse
-from models import Question
+from models import Question, Answer
 
 # Create your views here.
 
@@ -23,7 +23,7 @@ def questions_lists_all(request):
         'paginator': paginator, 'page': page,
     })
 
-def popular(request, *args, **kwargs):
+def popular_list(request, *args, **kwargs):
     questions = Question.objects.filter()
     questions = questions.order_by('-rating')
     limit = request.GET.get('limit', 10)
@@ -36,5 +36,10 @@ def popular(request, *args, **kwargs):
         'paginator': paginator, 'page': page,
     })
 
-def question(request, slug):
-    return HttpResponse('OK')
+def question_details(request, slug):
+    question = get_object_or_404(Question, slug=slug)
+    answers = Answer.objects.filter(question_id=question.id)
+    return render(request, 'question_details.html', {
+        'question': question,
+        'answers':answers.object_list,
+    })
