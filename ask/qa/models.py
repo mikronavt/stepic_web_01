@@ -1,5 +1,5 @@
 from django.db import models
-import django.contrib.auth.models.User
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Question(models.Model):
@@ -7,11 +7,12 @@ class Question(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(blank=True)
     rating = models.IntegerField()
-    author = models.ForeignKey(django.contrib.auth.models.User)
-    likes = models.ManyToManyField(django.contrib.auth.models.User)
+    author = models.ForeignKey(User)
+    likes = models.ManyToManyField(User)
 
 class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(blank=True)
     question = models.ForeignKey(Question)
-    author = models.ForeignKey(django.contrib.auth.models.User)
+    author = models.ForeignKey(User)
+
