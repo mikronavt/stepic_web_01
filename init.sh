@@ -19,7 +19,7 @@ sudo /etc/init.d/gunicorn restart
 gunicorn -D -c /home/box/web/hello.py hello:app
 cd /home/box/web/ask
 gunicorn -D ask.wsgi:application --bind 0.0.0.0:8000
-initdb.sh
+.\initdb.sh
 cd ask
 python manage.py syncdb
 cd ..
