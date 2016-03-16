@@ -83,6 +83,7 @@ def answer(request):
     if request.method == 'POST':
         if request.user.is_authenticated():
             form = AnswerForm(request.POST)
+            form._user = request.user
             if form.is_valid():
                 answer = form.save()
                 question = answer.question
@@ -91,7 +92,7 @@ def answer(request):
         else:
             return HttpResponseRedirect(default_url)
     else:
-        form = AnswerForm()
+        form = AnswerForm(request.user)
     return render(request, 'answer_form.html',{
             'form':form,
         })
