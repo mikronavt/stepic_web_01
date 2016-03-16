@@ -11,17 +11,18 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def questions_all(request, *args, **kwargs):
-    questions = Question.objects.filter()
-    questions = questions.order_by('-id')
-    limit = request.GET.get('limit', 10)
-    page = request.GET.get('page', 1)
-    paginator = Paginator(questions, limit)
-    paginator.baseurl = '/?page='
-    page = paginator.page(page)
-    return render(request, 'questions_last.html', {
-        'questions': page.object_list,
-        'paginator': paginator, 'page': page,
-    })
+    return HttpResponse('OK')
+    #questions = Question.objects.filter()
+    #questions = questions.order_by('-id')
+    #limit = request.GET.get('limit', 10)
+    #page = request.GET.get('page', 1)
+    #paginator = Paginator(questions, limit)
+    #paginator.baseurl = '/?page='
+    #page = paginator.page(page)
+    #return render(request, 'questions_last.html', {
+    #    'questions': page.object_list,
+    #    'paginator': paginator, 'page': page,
+    #})
 
 def popular_list(request, *args, **kwargs):
     questions = Question.objects.filter()

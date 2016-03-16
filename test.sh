@@ -19,6 +19,7 @@
 #curl -vv http://0.0.0.0:8000/blablabla/
 #echo "/"
 #curl -vv http://0.0.0.0:8000/
-mysql -uroot -e "SELECT User FROM mysql.user;"
-mysql -uroot -e "show grants for web_py;"
-mysql -uroot -e  "show tables;"
+#mysql -uroot -e "SELECT User FROM mysql.user;"
+#mysql -uroot -e "show grants for web_py;"
+#mysql -uroot -e  "show tables;"
+curl http://0.0.0.0/
