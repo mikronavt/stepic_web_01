@@ -19,3 +19,10 @@ class AnswerForm(forms.Form):
         answer = Answer(**self.cleaned_data)
         answer.save()
         return answer
+
+#class LoginForm(forms.Form):
+
+class SignupForm(forms.Form):
+    login = forms.CharField()
+    password = forms.PasswordInput()
+    email = forms.EmailField()
