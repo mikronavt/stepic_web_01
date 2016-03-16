@@ -36,26 +36,26 @@ class Answer(models.Model):
 
 
 
-class Session(models.Model):
-    key = models.CharField(max_length=255, unique=True)
-    user = models.ForeignKey(User)
-    expires = models.DateTimeField()
+#class Session(models.Model):
+#    key = models.CharField(max_length=255, unique=True)
+#    user = models.ForeignKey(User)
+#    expires = models.DateTimeField()
 
 
-def do_login(username, password):
-    try:
-        user = User.objects.get(username=username)
-    except User.DoesNotExist:
-        return None
-    hashed_pass = password
-    if user.password != hashed_pass:
-        return None
-    session = Session()
-    session.key = generate_long_random_key()
-    session.user = user
-    session.expires = datetime.date.today() + datetime.timedelta(days=5)
-    session.save()
-    return session
+#def do_login(username, password):
+#    try:
+#        user = User.objects.get(username=username)
+#    except User.DoesNotExist:
+#        return None
+#    hashed_pass = password
+#    if user.password != hashed_pass:
+#        return None
+#    session = Session()
+#    session.key = generate_long_random_key()
+#    session.user = user
+#    session.expires = datetime.date.today() + datetime.timedelta(days=5)
+#    session.save()
+#    return session
 
-def generate_long_random_key():
-    return random.random()*100000000000000
+#def generate_long_random_key():
+#    return random.random()*100000000000000
