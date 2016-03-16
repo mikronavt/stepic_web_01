@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseRedirect
 from models import Question, Answer
 from forms import AnswerForm, AskForm
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 
@@ -49,6 +50,7 @@ def question_details(request, qid):
         'answers':answers,
     })
 
+@csrf_protect
 def ask(request):
     if request.method == 'POST':
         form = AskForm(request.POST)
