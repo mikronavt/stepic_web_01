@@ -14,7 +14,7 @@ class Question(models.Model):
         return self.title
 
     def get_url(self):
-        return reverse('question_details', self.id)
+        return 'http://0.0.0.0/question/' + str(id) + '/'
 
 class Answer(models.Model):
     text = models.TextField()
