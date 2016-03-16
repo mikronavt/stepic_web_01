@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
-from models import Question, Answer, do_login
+from models import Question, Answer
 from forms import AnswerForm, AskForm, SignupForm, LoginForm
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
