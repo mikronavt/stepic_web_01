@@ -41,6 +41,7 @@ def popular_list(request, *args, **kwargs):
         'paginator': paginator, 'page': page,
     })
 
+@csrf_protect
 def question_details(request, qid):
 
     question = get_object_or_404(Question, id=qid)
