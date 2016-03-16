@@ -120,9 +120,9 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            username = form.username
-            password = form.password
-            email = form.email
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            email = request.POST.get('email')
             user = User.objects.create_user(username, email, password)
             user.save()
             user = authenticate(username=username, password=password)
