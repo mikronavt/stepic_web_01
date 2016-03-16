@@ -24,4 +24,5 @@
 #mysql -uroot -e  "show tables;"
 #curl http://0.0.0.0/
 #curl http://0.0.0.0/?page=1
-curl http://0.0.0.0/question/3141592/
+#curl http://0.0.0.0/question/3141592/
+curl --data "title=bebe&text=kuku" https://0.0.0.0/ask/
