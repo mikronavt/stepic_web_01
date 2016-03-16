@@ -39,9 +39,9 @@ def popular_list(request, *args, **kwargs):
 def question_details(request, qid):
 
     question = get_object_or_404(Question, id=qid)
-    answers = Answer.objects.filter(question_id=question.id)
+    #answers = Answer.objects.filter(question_id=question.id)
 
     return render(request, 'question_details.html', {
         'question': question,
-        'answers':answers.object_list,
+        #'answers':answers.object_list,
     })
