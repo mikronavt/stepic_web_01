@@ -88,7 +88,7 @@ def answer(request):
         })
 
 @csrf_protect
-def login(request):
+def login_user(request):
     form = LoginForm()
     if request.method == 'POST':
         username = request.POST.get('username')

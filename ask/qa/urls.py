@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'(^$)', 'qa.views.questions_all'),
-    url(r'^login/.*$', 'qa.views.login'),
+    url(r'^login/.*$', 'qa.views.login_user'),
     url(r'^signup/.*$', 'qa.views.signup'),
     url(r'^question/(?P<qid>\w+)/$', 'qa.views.question_details', name='question_details'),
     url(r'^ask/.*$', 'qa.views.ask'),
