@@ -18,5 +18,5 @@ class Answer(models.Model):
     question = models.ForeignKey(Question)
     author = models.ForeignKey(User)
     def __unicode__(self):
-        return self.title
+        return self.text
 
