@@ -25,4 +25,6 @@
 #curl http://0.0.0.0/
 #curl http://0.0.0.0/?page=1
 #curl http://0.0.0.0/question/3141592/
-curl --data "title=bebe&text=kuku" http://0.0.0.0/ask/
+#curl --data "title=bebe&text=kuku" http://0.0.0.0/ask/
+curl -v -c cookies.txt -b cookies.txt http://0.0.0.0/ask/
+curl -v -c cookies.txt -b cookies.txt -d "title=bebe&text=kuku&csrfmiddlewaretoken=<token from cookies.txt>" http://0.0.0.0/ask/
