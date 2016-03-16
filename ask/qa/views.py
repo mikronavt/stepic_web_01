@@ -57,11 +57,12 @@ def question_details(request, qid):
 def ask(request):
 
     if request.method == 'POST':
-        form = AskForm(request.POST)
-        if form.is_valid():
-            question = form.save()
-            url = question.get_url()
-            return HttpResponseRedirect(url)
+        return HttpResponse("OK")
+        #form = AskForm(request.POST)
+        #if form.is_valid():
+        #    question = form.save()
+        #    url = question.get_url()
+        #    return HttpResponseRedirect(url)
     else:
         form = AskForm()
     return render(request, 'ask_form.html',{
