@@ -4,6 +4,15 @@ from django.core.urlresolvers import reverse
 import random, datetime
 
 # Create your models here.
+
+class User(models.Model):
+    username = models.CharField(unique=True)
+    password = models.CharField()
+    email = models.EmailField()
+    def __unicode__(self):
+        return self.username
+
+
 class Question(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
@@ -25,12 +34,7 @@ class Answer(models.Model):
     def __unicode__(self):
         return self.text
 
-class User(models.Model):
-    username = models.CharField(unique=True)
-    password = models.CharField()
-    email = models.EmailField()
-    def __unicode__(self):
-        return self.username
+
 
 class Session(models.Model):
     key = models.CharField(unique=True)
