@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 # Create your models here.
@@ -24,3 +24,7 @@ class Answer(models.Model):
     def __unicode__(self):
         return self.text
 
+class User(models.Model):
+    login = models.CharField(unique=True)
+    password = models.CharField()
+    email = models.EmailField()
