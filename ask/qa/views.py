@@ -36,9 +36,9 @@ def popular_list(request, *args, **kwargs):
         'paginator': paginator, 'page': page,
     })
 
-def question_details(request, slug):
+def question_details(request, qid):
 
-    question = get_object_or_404(Question, slug=slug)
+    question = get_object_or_404(Question, id=qid)
     answers = Answer.objects.filter(question_id=question.id)
 
     return render(request, 'question_details.html', {
