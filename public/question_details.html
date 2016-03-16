@@ -5,11 +5,6 @@
     <title></title>
 </head>
 <body>
-    {{title}}
-    {{qtext}}
-    {{answers}}
-
-
     <form method="POST" action=".">
         {{form.as_ul}}
         {% csrf_token %}
@@ -19,5 +14,11 @@
         Сохранить</button>
     </div>
 </form>
+    {{title}}
+    {{qtext}}
+    {{answers}}
+
+
+
 </body>
 </html>
