@@ -18,7 +18,7 @@ def questions_all(request, *args, **kwargs):
     paginator = Paginator(questions, limit)
     paginator.baseurl = '/?page='
     page = paginator.page(page)
-    return HttpResponse('OK')
+    #return HttpResponse('OK')
     return render(request, 'questions_last.html', {
         'questions': page.object_list,
         'paginator': paginator, 'page': page,
