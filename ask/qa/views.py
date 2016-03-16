@@ -97,8 +97,8 @@ def login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                response = HttpResponseRedirect(default_url)
-                return response
+        response = HttpResponseRedirect(default_url)
+        return response
  #       username = request.POST.get('username')
   #      password = request.POST.get('password')
   #      session = do_login(username, password)
@@ -129,8 +129,8 @@ def signup(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    response = HttpResponseRedirect(default_url)
-                    return response
+        response = HttpResponseRedirect(default_url)
+        return response
             #session = do_login(username, password)
             #if session:
             #    sessid = session.key
