@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from models import Question, Answer
 from forms import AnswerForm, AskForm
 from django.views.decorators.csrf import csrf_protect
+from django.template import RequestContext
 
 # Create your views here.
 
@@ -52,6 +53,7 @@ def question_details(request, qid):
 
 @csrf_protect
 def ask(request):
+
     if request.method == 'POST':
         form = AskForm(request.POST)
         if form.is_valid():
