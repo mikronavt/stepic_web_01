@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from django.http import HttpResponse, HttpResponseRedirect
-from models import Question, Answer
-from forms import AnswerForm, AskForm
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
+from models import Question, Answer, do_login
+from forms import AnswerForm, AskForm, SignupForm, LoginForm
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from django.core.context_processors import csrf
@@ -10,6 +10,7 @@ from django.core.context_processors import csrf
 
 # Create your views here.
 
+default_url = 'http://0.0.0.0/'
 
 
 def test(request, *args, **kwargs):
@@ -87,8 +88,42 @@ def answer(request):
 
 @csrf_protect
 def login(request):
-    return HttpResponse('OK')
+    form = LoginForm()
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        session = do_login(username, password)
+        if session:
+            sessid = session.key
+            response = HttpResponseRedirect(default_url)
+            response.set_cookie('sessid', sessid,
+                domain=default_url, httponly=True,
+                expires = session.expires,
+            )
+            return response
+    return render(request, 'login_form.html',{
+            'form':form,
+        })
 
 @csrf_protect
 def signup(request):
-    return HttpResponse('OK')
+    form = SignupForm()
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            if user:
+                username = user.username
+                password = user.password
+                session = do_login(username, password)
+                if session:
+                    sessid = session.key
+                    response = HttpResponseRedirect(default_url)
+                    response.set_cookie('sessid', sessid,
+                        domain=default_url, httponly=True,
+                        expires = session.expires,
+                    )
+                    return response
+    return render(request, 'signup_form.html',{
+            'form':form,
+        })

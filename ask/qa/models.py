@@ -1,6 +1,7 @@
 from django.db import models
 #from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+import random, datetime
 
 # Create your models here.
 class Question(models.Model):
@@ -25,7 +26,7 @@ class Answer(models.Model):
         return self.text
 
 class User(models.Model):
-    login = models.CharField(unique=True)
+    username = models.CharField(unique=True)
     password = models.CharField()
     email = models.EmailField()
 
@@ -33,3 +34,22 @@ class Session(models.Model):
     key = models.CharField(unique=True)
     user = models.ForeignKey(User)
     expires = models.DateTimeField()
+
+
+def do_login(username, password):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return None
+    hashed_pass = password
+    if user.password != hashed_pass:
+        return None
+    session = Session()
+    session.key = generate_long_random_key()
+    session.user = user
+    session.expires = datetime.date.today() + datetime.timedelta(days=5)
+    session.save()
+    return session
+
+def generate_long_random_key():
+    return random.random()*100000000000000

@@ -1,6 +1,6 @@
 __author__ = 'User'
 from django import forms
-from models import Question, Answer
+from models import Question, Answer, User
 
 class AskForm(forms.Form):
     title = forms.CharField()
@@ -20,9 +20,15 @@ class AnswerForm(forms.Form):
         answer.save()
         return answer
 
-#class LoginForm(forms.Form):
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField()
 
 class SignupForm(forms.Form):
-    login = forms.CharField()
-    password = forms.PasswordInput()
+    username = forms.CharField()
+    password = forms.CharField()
     email = forms.EmailField()
+    def save(self):
+        user = User(**self.cleaned_data)
+        user.save()
+        return user
