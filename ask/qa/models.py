@@ -37,7 +37,7 @@ class Answer(models.Model):
 
 
 class Session(models.Model):
-    key = models.CharField(unique=True)
+    key = models.CharField(max_length=255, unique=True)
     user = models.ForeignKey(User)
     expires = models.DateTimeField()
 
