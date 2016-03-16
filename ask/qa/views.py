@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from models import Question, Answer
+from forms import AnswerForm, AskForm
 
 # Create your views here.
 
@@ -49,7 +50,14 @@ def question_details(request, qid):
     })
 
 def ask(request):
-    return HttpResponse('OK')
+    if request.method == 'POST':
+        return HttpResponse('OK')
+    else:
+        form = AskForm()
+        return render(request, 'ask_form.html',{
+            'form':form,
+        })
+
 
 def answer(request):
     return HttpResponse('OK')
