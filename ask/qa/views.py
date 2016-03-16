@@ -69,7 +69,7 @@ def ask(request):
             'form':form,
         })
 
-
+@csrf_protect
 def answer(request):
     if request.method == 'POST':
         form = AnswerForm(request.POST)
