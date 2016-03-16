@@ -29,6 +29,8 @@ class User(models.Model):
     username = models.CharField(unique=True)
     password = models.CharField()
     email = models.EmailField()
+    def __unicode__(self):
+        return self.title
 
 class Session(models.Model):
     key = models.CharField(unique=True)
