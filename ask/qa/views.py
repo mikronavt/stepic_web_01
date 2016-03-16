@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from models import Question, Answer
 from forms import AnswerForm, AskForm
 
@@ -51,7 +51,11 @@ def question_details(request, qid):
 
 def ask(request):
     if request.method == 'POST':
-        return HttpResponse('OK')
+        form = AskForm(request.POST)
+        if form.is_valid():
+            question = form.save()
+            url = question.get_url()
+            return HttpResponseRedirect(url)
     else:
         form = AskForm()
         return render(request, 'ask_form.html',{
