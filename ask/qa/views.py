@@ -72,7 +72,7 @@ def ask(request):
         else:
             return HttpResponseForbidden()
     else:
-        form = AskForm()
+        form = AskForm(request.user)
     return render(request, 'ask_form.html',{
             'form':form,
         })
