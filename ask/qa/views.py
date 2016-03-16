@@ -58,8 +58,8 @@ def ask(request):
 
     if request.method == 'POST':
         form = AskForm(request.POST)
-        return HttpResponse("OK")
-        #if form.is_valid():
+        if form.is_valid():
+            return HttpResponse("OK")
         #    question = form.save()
         #    url = question.get_url()
         #    return HttpResponseRedirect(url)
