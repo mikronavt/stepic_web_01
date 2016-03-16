@@ -57,8 +57,8 @@ def question_details(request, qid):
 def ask(request):
 
     if request.method == 'POST':
+        form = AskForm(request.POST)
         return HttpResponse("OK")
-        #form = AskForm(request.POST)
         #if form.is_valid():
         #    question = form.save()
         #    url = question.get_url()
