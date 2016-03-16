@@ -45,12 +45,13 @@ def question_details(request, qid):
 
     question = get_object_or_404(Question, id=qid)
     answers = Answer.objects.filter(question_id=qid)
-
+    form = AnswerForm()
 
     return render(request, 'question_details.html', {
         'title': question.title,
         'qtext': question.text,
         'answers':answers,
+        'form':form,
     })
 
 @csrf_protect
