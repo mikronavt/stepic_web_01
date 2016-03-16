@@ -85,8 +85,10 @@ def answer(request):
             'form':form,
         })
 
+@csrf_protect
 def login(request):
     return HttpResponse('OK')
 
+@csrf_protect
 def signup(request):
     return HttpResponse('OK')
