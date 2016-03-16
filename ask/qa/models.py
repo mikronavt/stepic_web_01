@@ -30,7 +30,7 @@ class User(models.Model):
     password = models.CharField()
     email = models.EmailField()
     def __unicode__(self):
-        return self.title
+        return self.username
 
 class Session(models.Model):
     key = models.CharField(unique=True)
