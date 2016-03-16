@@ -5,6 +5,7 @@ from models import Question, Answer
 from forms import AnswerForm, AskForm
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
+from django.core.context_processors import csrf
 
 # Create your views here.
 
