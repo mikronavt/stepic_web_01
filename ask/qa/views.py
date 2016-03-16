@@ -47,3 +47,9 @@ def question_details(request, qid):
         'qtext': question.text,
         'answers':answers,
     })
+
+def ask(request):
+    return HttpResponse('OK')
+
+def answer(request):
+    return HttpResponse('OK')
