@@ -7,7 +7,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from django.core.context_processors import csrf
 #import django.middleware.csrf.CsrfViewMiddleware
-
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 default_url = 'http://0.0.0.0/'
@@ -92,15 +93,23 @@ def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        session = do_login(username, password)
-        if session:
-            sessid = session.key
-            response = HttpResponseRedirect(default_url)
-            response.set_cookie('sessid', sessid,
-                domain=default_url, httponly=True,
-                expires = session.expires,
-            )
-            return response
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                response = HttpResponseRedirect(default_url)
+                return response
+ #       username = request.POST.get('username')
+  #      password = request.POST.get('password')
+  #      session = do_login(username, password)
+   #     if session:
+    #        sessid = session.key
+     #       response = HttpResponseRedirect(default_url)
+      #      response.set_cookie('sessid', sessid,
+       #         domain=default_url, httponly=True,
+        #        expires = session.expires,
+         #   )
+          #  return response
     return render(request, 'login_form.html',{
             'form':form,
         })
@@ -111,19 +120,26 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            if user:
-                username = user.username
-                password = user.password
-                session = do_login(username, password)
-                if session:
-                    sessid = session.key
+            username = form.username
+            password = form.password
+            email = form.email
+            user = User.objects.create_user(username, email, password)
+            user.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
                     response = HttpResponseRedirect(default_url)
-                    response.set_cookie('sessid', sessid,
-                        domain=default_url, httponly=True,
-                        expires = session.expires,
-                    )
                     return response
+            #session = do_login(username, password)
+            #if session:
+            #    sessid = session.key
+            #    response = HttpResponseRedirect(default_url)
+            #    response.set_cookie('sessid', sessid,
+            #        domain=default_url, httponly=True,
+            #        expires = session.expires,
+            #    )
+            #    return response
     return render(request, 'signup_form.html',{
             'form':form,
         })
