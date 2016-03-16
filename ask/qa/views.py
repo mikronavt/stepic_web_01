@@ -38,12 +38,10 @@ def popular_list(request, *args, **kwargs):
 
 def question_details(request, slug):
 
-    #question = get_object_or_404(Question, slug=slug)
-    #question = Question.objects.get(slug=slug)
-    return HttpResponse('OK')
-    #answers = Answer.objects.filter(question_id=question.id)
+    question = get_object_or_404(Question, slug=slug)
+    answers = Answer.objects.filter(question_id=question.id)
 
-    #return render(request, 'question_details.html', {
-        #'question': question,
-        #'answers':answers.object_list,
-    #})
+    return render(request, 'question_details.html', {
+        'question': question,
+        'answers':answers.object_list,
+    })
