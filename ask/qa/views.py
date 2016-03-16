@@ -66,6 +66,7 @@ def ask(request):
             form._user = request.user
             if form.is_valid():
                 question = form.save()
+
                 url = question.get_url()
 
                 return HttpResponseRedirect(url)
