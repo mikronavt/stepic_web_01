@@ -70,7 +70,7 @@ def ask(request):
 
                 return HttpResponseRedirect(url)
         else:
-            return HttpResponseForbidden()
+            return HttpResponseRedirect(default_url)
     else:
         form = AskForm(request.user)
     return render(request, 'ask_form.html',{
@@ -88,7 +88,7 @@ def answer(request):
                 url = question.get_url()
                 return HttpResponseRedirect(url)
         else:
-            return HttpResponseForbidden()
+            return HttpResponseRedirect(default_url)
     else:
         form = AnswerForm()
     return render(request, 'answer_form.html',{
