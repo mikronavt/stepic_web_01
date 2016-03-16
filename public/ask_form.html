@@ -5,11 +5,28 @@
     <title></title>
 </head>
 <body>
-{{form.as_ul}}
-<form method="POST" action="">
-
+{% for e in form.non_field_errors %}
+<div class="alert alert-danger">{{ e }}</div>
+{% endif %}
+<form class="form-horizontal" method="post" action="/blog/add/">
+<fieldset>
+{% for field in form %}
+<div class="control-group
+{% if field.errors %}has-error{% endif %}">
+<label class="control-label">{{ field.label }}</label>
+<div class="controls">{{ field }}</div>
+</div>
+{% endfor %}
+</fieldset>
+<div class="form-actions">
+<button type="submit" class="btn btn-primary">
+Сохранить</button>
+</div>
     {% csrf_token %}
 </form>
+
+
+
 
 
 
