@@ -84,3 +84,9 @@ def answer(request):
     return render(request, 'answer_form.html',{
             'form':form,
         })
+
+def login(request):
+    return HttpResponse('OK')
+
+def signup(request):
+    return HttpResponse('OK')
