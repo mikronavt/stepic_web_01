@@ -86,5 +86,5 @@ STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'public'),
-    '/home/box/web/public',
+    #'/home/box/web/public',
 )
