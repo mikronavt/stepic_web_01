@@ -5,7 +5,12 @@
     <title></title>
 </head>
 <body>
+<form method="POST" action="/ask/">
     {{form}}
+    {% csrf_token %}
+</form>
+
+
 
 
 
