@@ -45,5 +45,5 @@ def question_details(request, qid):
     return render(request, 'question_details.html', {
         'title': question.title,
         'qtext': question.text,
-        #'answers':answers,
+        'answers':answers,
     })
