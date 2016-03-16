@@ -1,16 +1,16 @@
 from django.db import models
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 import random, datetime
 
 # Create your models here.
 
-class User(models.Model):
-    username = models.CharField(max_length=255,unique=True)
-    password = models.CharField(max_length=255)
-    email = models.EmailField()
-    def __unicode__(self):
-        return self.username
+#class User(models.Model):
+#    username = models.CharField(max_length=255,unique=True)
+#    password = models.CharField(max_length=255)
+#    email = models.EmailField()
+#    def __unicode__(self):
+#        return self.username
 
 
 class Question(models.Model):

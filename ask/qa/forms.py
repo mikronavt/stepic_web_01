@@ -1,6 +1,7 @@
 __author__ = 'User'
 from django import forms
-from models import Question, Answer, User
+from models import Question, Answer
+from django.contrib.auth.models import User
 
 class AskForm(forms.Form):
     title = forms.CharField()
