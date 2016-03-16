@@ -23,3 +23,4 @@
 #mysql -uroot -e "show grants for web_py;"
 #mysql -uroot -e  "show tables;"
 curl http://0.0.0.0/
+curl http://0.0.0.0/?page=1
