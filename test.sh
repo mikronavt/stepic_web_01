@@ -22,5 +22,6 @@
 #mysql -uroot -e "SELECT User FROM mysql.user;"
 #mysql -uroot -e "show grants for web_py;"
 #mysql -uroot -e  "show tables;"
-curl http://0.0.0.0/
-curl http://0.0.0.0/?page=1
+#curl http://0.0.0.0/
+#curl http://0.0.0.0/?page=1
+curl http://0.0.0.0/question/3141592/
