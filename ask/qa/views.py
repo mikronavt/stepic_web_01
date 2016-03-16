@@ -61,11 +61,14 @@ def question_details(request, qid):
 def ask(request):
 
     if request.method == 'POST':
-        form = AskForm(request.POST)
-        if form.is_valid():
-            question = form.save()
-            url = question.get_url()
-            return HttpResponseRedirect(url)
+        if request.user.is_authenticated():
+            form = AskForm(request.POST)
+            if form.is_valid():
+                question = form.save()
+                url = question.get_url()
+                return HttpResponseRedirect(url)
+        else:
+            return HttpResponseForbidden()
     else:
         form = AskForm()
     return render(request, 'ask_form.html',{
@@ -75,12 +78,15 @@ def ask(request):
 @csrf_protect
 def answer(request):
     if request.method == 'POST':
-        form = AnswerForm(request.POST)
-        if form.is_valid():
-            answer = form.save()
-            question = answer.question
-            url = question.get_url()
-            return HttpResponseRedirect(url)
+        if request.user.is_authenticated():
+            form = AnswerForm(request.POST)
+            if form.is_valid():
+                answer = form.save()
+                question = answer.question
+                url = question.get_url()
+                return HttpResponseRedirect(url)
+        else:
+            return HttpResponseForbidden()
     else:
         form = AnswerForm()
     return render(request, 'answer_form.html',{
