@@ -71,4 +71,15 @@ def ask(request):
 
 
 def answer(request):
-    return HttpResponse('OK')
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save()
+            question = answer.question
+            url = question.get_url()
+            return HttpResponseRedirect(url)
+    else:
+        form = AnswerForm()
+    return render(request, 'answer_form.html',{
+            'form':form,
+        })
