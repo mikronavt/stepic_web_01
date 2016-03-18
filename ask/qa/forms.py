@@ -6,11 +6,11 @@ from django.contrib.auth.models import User
 class AskForm(forms.Form):
     title = forms.CharField()
     text = forms.CharField(widget=forms.Textarea)
-    #def __init__(self, user, **kwargs):
-    #    self._user = user
-    #    super(AskForm, self).__init__(**kwargs)
+    def __init__(self, user, **kwargs):
+        self._user = user
+        super(AskForm, self).__init__(**kwargs)
     def save(self):
-    #    self.cleaned_data['author'] = self._user
+        self.cleaned_data['author'] = self._user
         question = Question(**self.cleaned_data)
         question.save()
         return question
