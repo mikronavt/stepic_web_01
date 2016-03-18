@@ -90,7 +90,7 @@ def answer(request):
         else:
             return HttpResponseRedirect(default_url)
     else:
-        form = AnswerForm(request.user)
+        form = AnswerForm()
     return render(request, 'answer_form.html',{
             'form':form,
         })

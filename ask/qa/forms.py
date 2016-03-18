@@ -7,9 +7,6 @@ class AskForm(forms.Form):
     title = forms.CharField()
     text = forms.CharField(widget=forms.Textarea)
     _user = User
-    #def __init__(self, user, **kwargs):
-    #    super(AskForm, self).__init__(**kwargs)
-    #    self._user = user
 
     def save(self):
         self.cleaned_data['author'] = self._user
@@ -21,13 +18,11 @@ class AskForm(forms.Form):
 class AnswerForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea)
     question = forms.IntegerField(widget=forms.HiddenInput)
-    #def __init__(self, user, **kwargs):
-    #    self._user = user
-    #    super(AnswerForm, self).__init__(**kwargs)
-    def save(self):
-    #    self.cleaned_data['author'] = self._user
-        answer = Answer(**self.cleaned_data)
+    _user = User
 
+    def save(self):
+        self.cleaned_data['author'] = self._user
+        answer = Answer(**self.cleaned_data)
         answer.save()
         return answer
 
