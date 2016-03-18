@@ -63,7 +63,7 @@ def ask(request):
     if request.method == 'POST':
         if request.user.is_authenticated():
             form = AskForm(request.POST)
-            form._user = request.user
+            #form._user = request.user
             if form.is_valid():
                 return HttpResponse('OK')
 
