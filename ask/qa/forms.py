@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class AskForm(forms.Form):
     title = forms.CharField()
     text = forms.CharField(widget=forms.Textarea)
+    _user = User
     #def __init__(self, user, **kwargs):
     #    super(AskForm, self).__init__(**kwargs)
     #    self._user = user
