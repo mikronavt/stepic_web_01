@@ -77,7 +77,7 @@ def ask(request):
         else:
             return HttpResponseRedirect(default_url)
     else:
-        form = AskForm(request.user)
+        form = AskForm()
     return render(request, 'ask_form.html',{
             'form':form,
         })
