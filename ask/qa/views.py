@@ -64,8 +64,8 @@ def ask(request):
         if request.user.is_authenticated():
             form = AskForm(request.POST)
             form._user = request.user
-            a = form.text.join(form.title).join(form._user)
-            return HttpResponse(a)
+            #a = form.text.join(form.title).join(form._user)
+            #return HttpResponse(a)
             if form.is_valid():
                 return HttpResponse('OK')
 
