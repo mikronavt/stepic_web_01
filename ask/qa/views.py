@@ -61,8 +61,8 @@ def question_details(request, qid):
 def ask(request):
 
     if request.method == 'POST':
-        return HttpResponse('OK')
         if request.user.is_authenticated():
+            return HttpResponse('OK')
             form = AskForm(request.POST)
             form._user = request.user
             if form.is_valid():
